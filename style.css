@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@media (prefers-color-scheme: dark) {
+    :root{
+        --background:#111;
+        --text:#ddd;
+        --trans:#22222299;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root{
+        --background:#ddd;
+        --text:#222;
+        --trans:#dddddd99;
+    }
+}
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+}
+.loading{
+    position: absolute;
+    z-index: 999;
+    background-color: #111;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.littlecircle{
+    position: absolute;
+    height: 15vw;
+    width: 15vw;
+    border: #4e5660 2px solid;
+    border-radius: 50%;
+}
+.bigcircle{
+    position: absolute;
+    height: 25vw;
+    width: 25vw;
+    border: #4e5660 2px solid;
+    border-radius: 50%;
+}
+.loading .bighexagon,
+.loading .hexagon{
+    position: absolute;
+    filter: drop-shadow(rgba(255, 255, 255, 0.5) 0px 0px 10px);
+    stroke-width: 2px;
+    stroke:#4e5660;
+    animation: spin infinite 19s linear;
+    height: auto;
+}
+.loading .bighexagon{
+    width: 24vw;
+}
+.loading .hexagon{  
+    width: 14vw;
+    animation-direction: reverse;
+}
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+body{
+    background: var(--background);
+}
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 25px 35px;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--text);
+}
+img{
+    height: 50vh;
+    width: 100%;
+}
+nav a{
+    font-size: calc(1.5vh + 1.5vw);
+    letter-spacing: 1px;
+    position: relative;
+    color: var(--background)
+}
+nav li{
+    margin: 25px 0;
+}
+nav a::after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid var(--text);
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, 
+    -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    transform: scale(0,1);
+}
+nav ul{
+    top: 0;
+    left: 0;
+    background-color: rgba(200, 200, 200, 0.2);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+li a:hover::after {
+    opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+nav img{
+    height: 70px;
+    border-radius: 50%;
+}
+nav .toggle {
+    display: flex;
+}
+nav ul.active{
+    visibility: visible;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+.toggle {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: var(--background);
+  border-radius: 10px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--background);
+}
+.toggle span {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background: var(--text);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.toggle span:nth-child(1) {
+  transform: translateY(-15px);
+  width: 25px;
+  left: 15px;
+}
+.toggle.active span:nth-child(1) {
+  width: 40px;
+  transform: translateY(0) rotate(45deg);
+  transition-delay: 0.125s;
+}
+.toggle span:nth-child(2) {
+  transform: translateY(15px);
+  width: 15px;
+  left: 15px;
+}
+.toggle.active span:nth-child(2) {
+  width: 40px;
+  transform: translateY(0) rotate(315deg);
+  transition-delay: 0.25s;
+}
+.toggle.active span:nth-child(3) {
+  transform: translateX(60px);
+}
+.toggle:hover {
+  border: 2px solid var(--text);
+}
