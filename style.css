@@ -190,6 +190,10 @@ nav ul.active{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("https://images3.alphacoders.com/114/1148631.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 .main{
     width: 90%;
